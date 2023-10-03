@@ -4,3 +4,17 @@
 @import "~@edx/brand/paragon/overrides";
 
 @import "sass/style";
+
+/* Overrides */
+
+.large-screen-svg-primary-comet {
+    fill: #3438D0;
+}
+
+.medium-screen-svg-primary-comet {
+    fill: #3438D0;
+}
+
+.bg-primary-400-comet {
+    background-color: #3438D0 !important;
+}
