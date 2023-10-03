@@ -65,6 +65,7 @@ const BaseContainer = ({ children, showWelcomeBanner, username }) => {
           {showWelcomeBanner ? <AuthLargeLayout username={username} /> : <DefaultLargeLayout />}
         </MediaQuery>
         <div className={classNames('content', 'align-items-center mt-0')}>
+          THIS IS A TEST
           {children}
         </div>
       </div>

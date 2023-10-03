@@ -253,6 +253,7 @@ class LoginPage extends React.Component {
           {activationMsgType && <AccountActivationMessage messageType={activationMsgType} />}
           {this.props.resetPassword && !this.props.loginError ? <ResetPasswordSuccess /> : null}
           <Form name="sign-in-form" id="sign-in-form">
+            <span>FDJKSLF:DSJKL:SD:JKLDSLK:JDSFKLJ:DSFDSJKL:</span>
             <FormGroup
               name="emailOrUsername"
               value={this.state.emailOrUsername}
