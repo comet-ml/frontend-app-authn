@@ -22,7 +22,6 @@ const BaseComponent = ({ children, showWelcomeBanner }) => {
 
   return (
     <>
-    TEST
       {getConfig().ENABLE_COOKIE_POLICY_BANNER ? <CookiePolicyBanner languageCode={getLocale()} /> : null}
       <div className="layout">
         <MediaQuery maxWidth={breakpoints.small.maxWidth - 1}>

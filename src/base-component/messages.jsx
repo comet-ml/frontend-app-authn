@@ -3,12 +3,12 @@ import { defineMessages } from '@edx/frontend-platform/i18n';
 const messages = defineMessages({
   'start.learning': {
     id: 'start.learning',
-    defaultMessage: 'Start learning',
+    defaultMessage: "It's time",
     description: 'Header text for logistration MFE pages',
   },
   'with.site.name': {
     id: 'with.site.name',
-    defaultMessage: 'with {siteName}',
+    defaultMessage: 'to learn LLMOps',
     description: 'Header text with site name for logistration MFE pages',
   },
   // authenticated user base component text
