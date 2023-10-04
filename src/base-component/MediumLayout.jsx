@@ -22,7 +22,7 @@ const MediumLayout = () => {
             <div>
               <h1
                 className={classNames(
-                  'display-1 text-white mt-5 mb-5 mr-2',
+                  'display-2 text-white mt-5 mb-5 mr-2',
                   { 'ml-4.5': getConfig().SITE_NAME !== 'edX' },
                 )}
               >
