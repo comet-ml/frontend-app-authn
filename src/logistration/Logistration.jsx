@@ -126,6 +126,7 @@ const Logistration = (props) => {
                 <Navigate to={updatePathWithQueryParams(key)} replace />
               )}
               <div id="main-content" className="main-content">
+                HELKLO IS THIS WORKING
                 {selectedPage === LOGIN_PAGE
                   ? <LoginPage institutionLogin={institutionLogin} handleInstitutionLogin={handleInstitutionLogin} />
                   : (
