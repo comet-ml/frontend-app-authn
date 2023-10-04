@@ -22,8 +22,8 @@ const BaseComponent = ({ children, showWelcomeBanner }) => {
 
   return (
     <>
+    TEST
       {getConfig().ENABLE_COOKIE_POLICY_BANNER ? <CookiePolicyBanner languageCode={getLocale()} /> : null}
-      <div className="col-md-12 extra-large-screen-top-stripe" />
       <div className="layout">
         <MediaQuery maxWidth={breakpoints.small.maxWidth - 1}>
           {authenticatedUser ? <AuthSmallLayout username={username} /> : <SmallLayout />}
@@ -35,7 +35,7 @@ const BaseComponent = ({ children, showWelcomeBanner }) => {
           {authenticatedUser ? <AuthLargeLayout username={username} /> : <LargeLayout />}
         </MediaQuery>
 
-        <div className={classNames('content', { 'align-items-center mt-0': authenticatedUser })}>
+        <div className={classNames('content', 'align-items-center mt-0')}>
           {children}
         </div>
       </div>
