@@ -33,6 +33,7 @@ const BaseContainer = ({ children, showWelcomeBanner, username }) => {
   if (baseContainerVersion === IMAGE_LAYOUT) {
     return (
       <div className="layout">
+        HELLO THIS IS THE LAYOUT COMPONENT
         <MediaQuery maxWidth={breakpoints.extraSmall.maxWidth - 1}>
           {showWelcomeBanner ? <AuthSmallLayout username={username} /> : <ImageExtraSmallLayout />}
         </MediaQuery>

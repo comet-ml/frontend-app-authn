@@ -91,6 +91,7 @@ const Logistration = (props) => {
 
   return (
     <BaseContainer>
+    WHY ISN"T THIS CHANGING ANYTHING
       <div>
         {disablePublicAccountCreation
           ? (

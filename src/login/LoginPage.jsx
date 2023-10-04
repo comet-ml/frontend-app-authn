@@ -232,6 +232,7 @@ class LoginPage extends React.Component {
 
     return (
       <>
+      HELLO
         <Helmet>
           <title>{intl.formatMessage(messages['login.page.title'],
             { siteName: getConfig().SITE_NAME })}
