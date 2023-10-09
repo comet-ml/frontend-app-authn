@@ -1,6 +1,4 @@
-import React, {
-  useEffect, useMemo, useState,
-} from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { connect } from 'react-redux';
 
 import { getConfig, snakeCaseObject } from '@edx/frontend-platform';
@@ -9,6 +7,7 @@ import {
   getCountryList, getLocale, useIntl,
 } from '@edx/frontend-platform/i18n';
 import { Form, Spinner, StatefulButton } from '@edx/paragon';
+import axios from 'axios';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 import Skeleton from 'react-loading-skeleton';
@@ -448,6 +447,22 @@ const RegistrationPage = (props) => {
     }
   };
 
+  const registerComet = async () => {
+    const payload = {
+      isSubscribed: false,
+      subscribeToNewsletter: true,
+      userName: formFields.username,
+      email: formFields.email,
+      plainTextPassword: formFields.password,
+      firstName: formFields.name,
+      lastName: '',
+      signupSource: window.location.href,
+    };
+
+    const response = await axios.post('https://www.comet.com/api/auth/new', payload);
+    console.log(`Comet signup: ${response.status}`);
+  };
+
   const registerUser = () => {
     const totalRegistrationTime = (Date.now() - formStartTime) / 1000;
     let payload = { ...formFields };
@@ -495,9 +510,10 @@ const RegistrationPage = (props) => {
     props.registerNewUser(payload);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     registerUser();
+    await registerComet();
   };
 
   useEffect(() => {
