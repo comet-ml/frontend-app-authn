@@ -19,7 +19,7 @@ export async function registerRequest(registrationInformation) {
     });
 
   return {
-    redirectUrl: 'https://apps.tutor.nothingtochere.com/learning/course/course-v1:edX+DemoX+Demo_Course/home',
+    redirectUrl: 'https://apps.courses.comet.com/learning/course/course-v1:Comet+101+1/home',
     success: data.success || false,
   };
 }
@@ -32,7 +32,7 @@ export async function enrollInMainCourse() {
   const { data } = await getAuthenticatedHttpClient()
     .post(
     `${getConfig().LMS_BASE_URL}/api/enrollment/v1/enrollment`,
-    { course_details: { course_id: 'course-v1:edX+DemoX+Demo_Course' } },
+    { course_details: { course_id: 'course-v1:Comet+101+1' } },
     requestConfig,
     );
 
