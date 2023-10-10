@@ -18,16 +18,26 @@ export async function registerRequest(registrationInformation) {
       throw (e);
     });
 
-  const { data: registrationData } = await getAuthenticatedHttpClient()
+  return {
+    redirectUrl: 'https://apps.tutor.nothingtochere.com/learning/course/course-v1:edX+DemoX+Demo_Course/home',
+    success: data.success || false,
+  };
+}
+
+export async function enrollInMainCourse() {
+  const requestConfig = {
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+  };
+
+  const { data } = await getAuthenticatedHttpClient()
     .post(
-      `${getConfig().LMS_BASE_URL}/api/enrollment/v1/enrollment`,
-      { course_details: { course_id: 'course-v1:edX+DemoX+Demo_Course' } },
+    `${getConfig().LMS_BASE_URL}/api/enrollment/v1/enrollment`,
+    { course_details: { course_id: 'course-v1:edX+DemoX+Demo_Course' } },
+    requestConfig,
     );
 
   return {
-    redirectUrl: data.redirect_url || `${getConfig().LMS_BASE_URL}/dashboard`,
-    success: data.success || false,
-    registrationSuccess: registrationData?.success || false,
+    success: data?.success,
   };
 }
 

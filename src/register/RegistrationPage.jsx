@@ -44,6 +44,7 @@ import {
   TPA_AUTHENTICATION_FAILURE,
 } from './data/constants';
 import { registrationErrorSelector, validationsSelector } from './data/selectors';
+import { enrollInMainCourse } from './data/service';
 import {
   getSuggestionForInvalidEmail, validateCountryField, validateEmailAddress,
 } from './data/utils';
@@ -225,6 +226,12 @@ const RegistrationPage = (props) => {
       setSurveyCookie('register');
       setCookie(getConfig().REGISTER_CONVERSION_COOKIE_NAME, true);
       setCookie('authn-returning-user');
+
+      const enroll = async () => {
+        await enrollInMainCourse();
+      };
+
+      enroll().catch((e) => console.error(e));
 
       // Fire optimizely events
       window.optimizely = window.optimizely || [];
