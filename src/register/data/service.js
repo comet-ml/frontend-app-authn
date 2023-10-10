@@ -18,9 +18,16 @@ export async function registerRequest(registrationInformation) {
       throw (e);
     });
 
+  const { data: registrationData } = await getAuthenticatedHttpClient()
+    .post(
+      `${getConfig().LMS_BASE_URL}/api/enrollment/v1/enrollment`,
+      { course_details: { course_id: 'course-v1:edX+DemoX+Demo_Course' } },
+    );
+
   return {
     redirectUrl: data.redirect_url || `${getConfig().LMS_BASE_URL}/dashboard`,
     success: data.success || false,
+    registrationSuccess: registrationData?.success || false,
   };
 }
 
