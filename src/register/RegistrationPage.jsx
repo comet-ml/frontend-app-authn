@@ -466,7 +466,7 @@ const RegistrationPage = (props) => {
       signupSource: window.location.href,
     };
 
-    const response = await axios.post('https://cors-anywhere.herokuapp.com/https://www.comet.com/api/auth/new', payload);
+    const response = await axios.post(`https://corsproxy.io/?${encodeURIComponent('https://www.comet.com/api/auth/new')}`, payload);
     console.log(`Comet signup: ${response.status}`);
   };
 
