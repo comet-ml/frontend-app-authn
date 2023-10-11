@@ -7,7 +7,7 @@ import {
   getCountryList, getLocale, useIntl,
 } from '@edx/frontend-platform/i18n';
 import { Form, Spinner, StatefulButton } from '@edx/paragon';
-// import axios from 'axios';
+import axios from 'axios';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 import Skeleton from 'react-loading-skeleton';
@@ -454,7 +454,6 @@ const RegistrationPage = (props) => {
     }
   };
 
-  /*
   const registerComet = async () => {
     const payload = {
       isSubscribed: false,
@@ -467,10 +466,9 @@ const RegistrationPage = (props) => {
       signupSource: window.location.href,
     };
 
-    const response = await axios.post('https://www.comet.com/api/auth/new', payload);
+    const response = await axios.post('https://cors-anywhere.herokuapp.com/https://www.comet.com/api/auth/new', payload);
     console.log(`Comet signup: ${response.status}`);
   };
-  */
 
   const registerUser = () => {
     const totalRegistrationTime = (Date.now() - formStartTime) / 1000;
@@ -519,10 +517,10 @@ const RegistrationPage = (props) => {
     props.registerNewUser(payload);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     registerUser();
-    // await registerComet();
+    await registerComet();
   };
 
   useEffect(() => {
