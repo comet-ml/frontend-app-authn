@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import React, { useEffect, useMemo, useState } from 'react';
 import { connect } from 'react-redux';
 
@@ -641,6 +642,9 @@ const RegistrationPage = (props) => {
                 onClick={handleSubmit}
                 onMouseDown={(e) => e.preventDefault()}
               />
+              <div>
+                <p>Note: Registering for a course will automatically register a Comet ML account using the same credentials.</p>
+              </div>
               <ThirdPartyAuth
                 currentProvider={currentProvider}
                 providers={providers}
