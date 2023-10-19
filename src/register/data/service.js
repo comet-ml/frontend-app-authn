@@ -8,6 +8,8 @@ export async function registerRequest(registrationInformation) {
     isPublic: true,
   };
 
+  const { redirectUrl } = registrationInformation;
+
   const { data } = await getAuthenticatedHttpClient()
     .post(
       `${getConfig().LMS_BASE_URL}/api/user/v2/account/registration/`,
@@ -19,7 +21,7 @@ export async function registerRequest(registrationInformation) {
     });
 
   return {
-    redirectUrl: 'https://apps.courses.comet.com/learning/course/course-v1:Comet+101+1/home',
+    redirectUrl: redirectUrl ?? 'https://apps.courses.comet.com/learning/course/course-v1:Comet+101+1/home',
     success: data.success || false,
   };
 }

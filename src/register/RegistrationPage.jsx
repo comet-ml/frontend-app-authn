@@ -28,6 +28,7 @@ import {
 import {
   getAllPossibleQueryParams, getTpaHint, getTpaProvider, setCookie, setSurveyCookie,
 } from '../data/utils';
+import useEnvironment from '../hooks/useEnvironment';
 import ConfigurableRegistrationForm from './ConfigurableRegistrationForm';
 import {
   backupRegistrationFormBegin,
@@ -83,6 +84,14 @@ const RegistrationPage = (props) => {
     validateFromBackend,
     clearBackendError,
   } = props;
+
+  const environment = useEnvironment();
+  const redirectUrl = useMemo(() => {
+    if (environment === 'staging') {
+      return 'https://apps.courses.dev.comet.com/learning/course/course-v1:Comet+101+1/home';
+    }
+    return 'https://apps.courses.comet.com/learning/course/course-v1:Comet+101+1/home';
+  }, [environment]);
 
   const { formatMessage } = useIntl();
   const countryList = useMemo(() => getCountryList(getLocale()), []);
@@ -467,7 +476,7 @@ const RegistrationPage = (props) => {
       signupSource: window.location.href,
     };
 
-    const response = await axios.post(`https://corsproxy.io/?${encodeURIComponent('https://www.comet.com/api/auth/new')}`, payload);
+    const response = await axios.post('\')}', payload);
     console.log(`Comet signup: ${response.status}`);
   };
 
@@ -514,7 +523,7 @@ const RegistrationPage = (props) => {
     payload.totalRegistrationTime = totalRegistrationTime;
 
     // add query params to the payload
-    payload = { ...payload, ...queryParams };
+    payload = { ...payload, ...queryParams, redirectUrl };
     props.registerNewUser(payload);
   };
 
