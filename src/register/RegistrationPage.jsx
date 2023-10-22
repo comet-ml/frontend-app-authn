@@ -476,7 +476,9 @@ const RegistrationPage = (props) => {
       signupSource: window.location.href,
     };
 
-    const response = await axios.post('\')}', payload);
+    console.log("We're trying to post here");
+    const response = await axios.post('https://tutor.nothingtochere.com/registration-proxy/register-proxy/', payload);
+    console.log('response');
     console.log(`Comet signup: ${response.status}`);
   };
 
