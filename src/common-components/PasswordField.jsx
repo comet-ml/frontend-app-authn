@@ -9,7 +9,7 @@ import {
 } from '@edx/paragon/icons';
 import PropTypes from 'prop-types';
 
-import { LETTER_REGEX, NUMBER_REGEX } from '../data/constants';
+import { LETTER_REGEX, NUMBER_REGEX, SPECIAL_REGEX } from '../data/constants';
 import messages from './messages';
 
 const PasswordField = (props) => {
@@ -50,6 +50,10 @@ const PasswordField = (props) => {
       <span id="characters-check" className="d-flex align-items-center">
         {props.value.length >= 8 ? <Icon className="text-success mr-1" src={Check} /> : <Icon className="mr-1 text-light-700" src={Remove} />}
         {formatMessage(messages['eight.characters'])}
+      </span>
+      <span id="special-check" className="d-flex align-items-center">
+        {SPECIAL_REGEX.test(props.value) ? <Icon className="text-success mr-1" src={Check} /> : <Icon className="mr-1 text-light-700" src={Remove} />}
+        {formatMessage(messages['one.special'])}
       </span>
     </Tooltip>
   );

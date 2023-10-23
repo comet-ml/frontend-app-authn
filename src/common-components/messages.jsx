@@ -66,6 +66,11 @@ const messages = defineMessages({
     defaultMessage: '1 number',
     description: 'password requirement to have 1 number',
   },
+  'one.special': {
+    id: 'one.special',
+    default_message: '1 special character',
+    description: 'password requirement to have 1 special character',
+  },
   'eight.characters': {
     id: 'eight.characters',
     defaultMessage: '8 characters',
