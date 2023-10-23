@@ -22,8 +22,7 @@ import {
 } from '../common-components/data/selectors';
 import EnterpriseSSO from '../common-components/EnterpriseSSO';
 import {
-  COMPLETE_STATE,
-  DEFAULT_STATE, INVALID_NAME_REGEX, LETTER_REGEX, NUMBER_REGEX, PENDING_STATE, REGISTER_PAGE, VALID_EMAIL_REGEX,
+  COMPLETE_STATE, DEFAULT_STATE, INVALID_NAME_REGEX, LETTER_REGEX, NUMBER_REGEX, PENDING_STATE, REGISTER_PAGE, SPECIAL_REGEX, VALID_EMAIL_REGEX,
 } from '../data/constants';
 import {
   getAllPossibleQueryParams, getTpaHint, getTpaProvider, setCookie, setSurveyCookie,
@@ -316,6 +315,8 @@ const RegistrationPage = (props) => {
       case 'password':
         if (!value || !LETTER_REGEX.test(value) || !NUMBER_REGEX.test(value) || value.length < 8) {
           fieldError = formatMessage(messages['password.validation.message']);
+        } else if (!SPECIAL_REGEX.test(value)) {
+          fieldError = formatMessage[messages['password.validation.special.message']];
         } else if (shouldValidateFromBackend) {
           validateFromBackend(payload);
         }
@@ -476,10 +477,8 @@ const RegistrationPage = (props) => {
       signupSource: window.location.href,
     };
 
-    console.log("We're trying to post here");
     const response = await axios.post('https://tutor.nothingtochere.com/registration-proxy/register-proxy/', payload);
-    console.log('response');
-    console.log(`Comet signup: ${response.status}`);
+    console.log(response);
   };
 
   const registerUser = () => {

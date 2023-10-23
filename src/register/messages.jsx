@@ -131,6 +131,11 @@ const messages = defineMessages({
     defaultMessage: 'Password criteria has not been met',
     description: 'Error message for empty or invalid password',
   },
+  'password.validation.special.message': {
+    id: 'password.validation.message.2',
+    defaultMessage: 'Password must include at least one special character',
+    description: 'Error message for password missing special character',
+  },
   'username.format.validation.message': {
     id: 'username.format.validation.message',
     defaultMessage: 'Usernames can only contain letters (A-Z, a-z), numerals (0-9), underscores (_), and hyphens (-). Usernames cannot contain spaces',
