@@ -477,7 +477,7 @@ const RegistrationPage = (props) => {
       signupSource: window.location.href,
     };
 
-    const response = await axios.post('https://tutor.nothingtochere.com/registration-proxy/register-proxy/', payload);
+    const response = await axios.post('https://courses.comet.com/registration-proxy/register-proxy/', payload);
     console.log(response);
   };
 
