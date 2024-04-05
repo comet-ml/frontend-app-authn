@@ -475,6 +475,7 @@ const RegistrationPage = (props) => {
       firstName: formFields.name,
       lastName: '',
       signupSource: window.location.href,
+      http_referer: 'direct'
     };
 
     const response = await axios.post('https://courses.comet.com/registration-proxy/register-proxy/', payload);
