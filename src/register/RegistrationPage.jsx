@@ -467,6 +467,7 @@ const RegistrationPage = (props) => {
 
   const registerComet = async () => {
     const payload = {
+      apiKey: null,
       isSubscribed: false,
       subscribeToNewsletter: true,
       userName: formFields.username,
@@ -474,8 +475,7 @@ const RegistrationPage = (props) => {
       plainTextPassword: formFields.password,
       firstName: formFields.name,
       lastName: '',
-      signupSource: window.location.href,
-      http_referer: 'direct'
+      signupSource: window.location.href
     };
 
     const response = await axios.post('https://courses.comet.com/registration-proxy/register-proxy/', payload);
