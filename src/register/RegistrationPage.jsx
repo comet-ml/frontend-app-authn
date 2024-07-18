@@ -22,7 +22,19 @@ import {
 } from '../common-components/data/selectors';
 import EnterpriseSSO from '../common-components/EnterpriseSSO';
 import {
-  COMPLETE_STATE, DEFAULT_STATE, INVALID_NAME_REGEX, LETTER_REGEX, NUMBER_REGEX, PENDING_STATE, REGISTER_PAGE, SPECIAL_REGEX, VALID_EMAIL_REGEX,
+  COMPLETE_STATE, 
+  DEFAULT_STATE, 
+  INVALID_NAME_REGEX, 
+  LETTER_REGEX, 
+  NUMBER_REGEX, 
+  PENDING_STATE, 
+  REGISTER_PAGE, 
+  SPECIAL_REGEX, 
+  VALID_EMAIL_REGEX,
+  REPEATING_REGEX,
+  WHITESPACE_REGEX,
+  LOWERCASE_REGEX,
+  UPPERCASE_REGEX
 } from '../data/constants';
 import {
   getAllPossibleQueryParams, getTpaHint, getTpaProvider, setCookie, setSurveyCookie,
@@ -313,10 +325,12 @@ const RegistrationPage = (props) => {
         }
         break;
       case 'password':
-        if (!value || !LETTER_REGEX.test(value) || !NUMBER_REGEX.test(value) || value.length < 8) {
+        if (!value || !LETTER_REGEX.test(value) || !NUMBER_REGEX.test(value) || value.length < 8 || WHITESPACE_REGEX.test(value) || REPEATING_REGEX.test(value) || !UPPERCASE_REGEX.test(value) || !LOWERCASE_REGEX.test(value)) {
           fieldError = formatMessage(messages['password.validation.message']);
         } else if (!SPECIAL_REGEX.test(value)) {
           fieldError = formatMessage[messages['password.validation.special.message']];
+        } else if (value.contains(formFields.username)) {
+          fieldError = formatMessage(messages['password.validation.message']);
         } else if (shouldValidateFromBackend) {
           validateFromBackend(payload);
         }
