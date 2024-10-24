@@ -64,7 +64,7 @@ const PasswordField = (props) => {
         {formatMessage(messages['no.repeated.characters'])}
       </span>
       <span id="username-check" className="d-flex align-items-center">
-        {props.value.toLowerCase().includes(props.username.toLowerCase()) ? <Icon className="mr-1 text-light-700" src={Remove} /> : <Icon className="text-success mr-1" src={Check} />}
+        {props?.value?.toLowerCase().includes(props?.username?.toLowerCase()) ? <Icon className="mr-1 text-light-700" src={Remove} /> : <Icon className="text-success mr-1" src={Check} />}
         {formatMessage(messages['no.username.in.password'])}
       </span>
 
@@ -108,6 +108,7 @@ PasswordField.defaultProps = {
   handleChange: () => {},
   showRequirements: true,
   autoComplete: null,
+  username: ''
 };
 
 PasswordField.propTypes = {
@@ -121,6 +122,7 @@ PasswordField.propTypes = {
   showRequirements: PropTypes.bool,
   value: PropTypes.string.isRequired,
   autoComplete: PropTypes.string,
+  username: PropTypes.string
 };
 
 export default PasswordField;
