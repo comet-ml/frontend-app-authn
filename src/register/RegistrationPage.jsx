@@ -99,9 +99,9 @@ const RegistrationPage = (props) => {
   const environment = useEnvironment();
   const redirectUrl = useMemo(() => {
     if (environment === 'staging') {
-      return 'https://apps.courses.dev.comet.com/learning/course/course-v1:Comet+101+1/home';
+      return 'https://apps.courses.dev.comet.com/learning/course/course-v1:Comet+101+2024/home';
     }
-    return 'https://apps.courses.comet.com/learning/course/course-v1:Comet+101+1/home';
+    return 'https://apps.courses.comet.com/learning/course/course-v1:Comet+101+2024/home';
   }, [environment]);
 
   const { formatMessage } = useIntl();
@@ -641,6 +641,7 @@ const RegistrationPage = (props) => {
                   handleFocus={handleOnFocus}
                   errorMessage={errors.password}
                   floatingLabel={formatMessage(messages['registration.password.label'])}
+                  username={formFields.username}
                 />
               )}
               <ConfigurableRegistrationForm

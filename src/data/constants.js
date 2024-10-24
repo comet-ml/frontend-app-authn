@@ -32,9 +32,10 @@ export const VALID_EMAIL_REGEX = '(^[-!#$%&\'*+/=?^_`{}|~0-9A-Z]+(\\.[-!#$%&\'*+
 export const LETTER_REGEX = /[a-zA-Z]/;
 export const REPEATING_REGEX = /(.)\1{2,}/;
 export const NUMBER_REGEX = /\d/;
-export const WHITESPACE_REGEX = /\s/;
 export const INVALID_NAME_REGEX = /[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/gi; // eslint-disable-line no-useless-escape
 export const SPECIAL_REGEX = /[!@#$%^&*()\-+={}[\]:;"'<>,.?\/|\\]/; // eslint-disable-line no-useless-escape
+export const REPEATED_CHAR_REGEX = /(.)\1+/; // eslint-disable-line no-useless-escape
+export const WHITESPACE_REGEX = /\s/; // eslint-disable-line no-useless-escape
 export const LOWERCASE_REGEX = /[a-z]/;
 export const UPPERCASE_REGEX = /[A-Z]/;
 

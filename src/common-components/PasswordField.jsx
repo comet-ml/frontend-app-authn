@@ -9,7 +9,7 @@ import {
 } from '@edx/paragon/icons';
 import PropTypes from 'prop-types';
 
-import { LETTER_REGEX, NUMBER_REGEX, SPECIAL_REGEX } from '../data/constants';
+import { LETTER_REGEX, NUMBER_REGEX, SPECIAL_REGEX, WHITESPACE_REGEX, REPEATED_CHAR_REGEX } from '../data/constants';
 import messages from './messages';
 
 const PasswordField = (props) => {
@@ -51,10 +51,23 @@ const PasswordField = (props) => {
         {props.value.length >= 8 ? <Icon className="text-success mr-1" src={Check} /> : <Icon className="mr-1 text-light-700" src={Remove} />}
         {formatMessage(messages['eight.characters'])}
       </span>
+      <span id="whitespace-check" className="d-flex align-items-center">
+        {WHITESPACE_REGEX.test(props.value) ? <Icon className="mr-1 text-light-700" src={Remove} /> : <Icon className="text-success mr-1" src={Check} /> }
+        {formatMessage(messages['no.whitespace'])}
+      </span>
       <span id="special-check" className="d-flex align-items-center">
         {SPECIAL_REGEX.test(props.value) ? <Icon className="text-success mr-1" src={Check} /> : <Icon className="mr-1 text-light-700" src={Remove} />}
         {formatMessage(messages['one.special'])}
       </span>
+      <span id="repeated-check" className="d-flex align-items-center">
+        {REPEATED_CHAR_REGEX.test(props.value) ? <Icon className="mr-1 text-light-700" src={Remove} /> : <Icon className="text-success mr-1" src={Check} />}
+        {formatMessage(messages['no.repeated.characters'])}
+      </span>
+      <span id="username-check" className="d-flex align-items-center">
+        {props.value.toLowerCase().includes(props.username.toLowerCase()) ? <Icon className="mr-1 text-light-700" src={Remove} /> : <Icon className="text-success mr-1" src={Check} />}
+        {formatMessage(messages['no.username.in.password'])}
+      </span>
+
     </Tooltip>
   );
 
