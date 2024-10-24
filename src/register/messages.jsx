@@ -128,7 +128,7 @@ const messages = defineMessages({
   },
   'password.validation.message': {
     id: 'password.validation.message',
-    defaultMessage: 'Password criteria has not been met',
+    defaultMessage: 'Password must be at least 8 characters long and must contain 1 uppercase letter, one lowercase letter, one number, and one special character. Passwords cannot contain repeating characters, whitespace, or your username.',
     description: 'Error message for empty or invalid password',
   },
   'password.validation.special.message': {
