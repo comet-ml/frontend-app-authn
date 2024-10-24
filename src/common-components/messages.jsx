@@ -81,6 +81,11 @@ const messages = defineMessages({
     defaultMessage: 'no repeating characters',
     description: 'password requirement for having no repeating characters'
   },
+  'no.consecutive.characters': {
+    id: 'no.consecutive.characters',
+    defaultMessage: 'no consecutive characters',
+    description: 'password requirement for no consecutive characters'
+  },
   'no.username.in.password': {
     id: 'no.username.in.password',
     defaultMessage: "can't contain username",
