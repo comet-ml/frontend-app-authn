@@ -21,7 +21,7 @@ export async function registerRequest(registrationInformation) {
     });
 
   return {
-    redirectUrl: redirectUrl ?? 'https://apps.courses.comet.com/learning/course/course-v1:Comet+101+1/home',
+    redirectUrl: redirectUrl ?? 'https://apps.courses.comet.com/learning/course/course-v1:Comet+101+2024/home',
     success: data.success || false,
   };
 }
@@ -34,7 +34,7 @@ export async function enrollInMainCourse() {
   const { data } = await getAuthenticatedHttpClient()
     .post(
     `${getConfig().LMS_BASE_URL}/api/enrollment/v1/enrollment`,
-    { course_details: { course_id: 'course-v1:Comet+101+1' } },
+    { course_details: { course_id: 'course-v1:Comet+101+2024' } },
     requestConfig,
     );
 

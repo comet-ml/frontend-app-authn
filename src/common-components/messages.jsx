@@ -76,6 +76,21 @@ const messages = defineMessages({
     defaultMessage: '8 characters',
     description: 'password requirement to have a minimum of 8 characters',
   },
+  'no.repeated.characters': {
+    id: 'no.repeated.characters',
+    defaultMessage: 'no repeating characters',
+    description: 'password requirement for having no repeating characters'
+  },
+  'no.username.in.password': {
+    id: 'no.username.in.password',
+    defaultMessage: 'cannot contain username',
+    descripttion: 'password requirement for not including the username'
+  },
+  'no.whitespace': {
+    id: 'no.whitespace',
+    defaultMessage: 'no whitespace',
+    description: 'Password requirement for no whitespace'
+  },
   'password.sr.only.helping.text': {
     id: 'password.sr.only.helping.text',
     defaultMessage: 'Password must contain at least 8 characters, at least one letter, and at least one number',

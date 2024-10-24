@@ -33,6 +33,8 @@ export const LETTER_REGEX = /[a-zA-Z]/;
 export const NUMBER_REGEX = /\d/;
 export const INVALID_NAME_REGEX = /[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/gi; // eslint-disable-line no-useless-escape
 export const SPECIAL_REGEX = /[!@#$%^&*()\-+={}[\]:;"'<>,.?\/|\\]/; // eslint-disable-line no-useless-escape
+export const REPEATED_CHAR_REGEX = /(.)\1+/; // eslint-disable-line no-useless-escape
+export const WHITESPACE_REGEX = /\s/; // eslint-disable-line no-useless-escape
 
 // Query string parameters that can be passed to LMS to manage
 // things like auto-enrollment upon login and registration.
