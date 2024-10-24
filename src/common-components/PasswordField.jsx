@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 
 import { useIntl } from '@edx/frontend-platform/i18n';
 import {
@@ -28,6 +28,27 @@ const PasswordField = (props) => {
     }
     setTimeout(() => setShowTooltip(props.showRequirements && true), 150);
   };
+
+  const passwordContainsUsername = useMemo(() => {
+    // This is incredibly dumb and should be one line, but there is some weird transpile issue
+    // that is messing with optional chaining and changing functions like .includes()
+    if (props.username == '') return false;
+
+    if (!props?.value) return false;
+
+    const lowercaseUsername = props?.username?.toLowerCase() ?? '1';
+    const lowercasePassword = props?.value?.toLowerCase() ?? '';
+    
+    if (lowercasePassword.indexOf(lowercaseUsername) > -1) {
+      return true;
+    }
+
+    else {
+      return false;
+    }
+
+
+  }, [props?.username, props?.value4])
 
   const HideButton = (
     <IconButton onFocus={handleFocus} onBlur={handleBlur} name="password" src={VisibilityOff} iconAs={Icon} onClick={setHiddenTrue} size="sm" variant="secondary" alt={formatMessage(messages['hide.password'])} />
@@ -64,7 +85,7 @@ const PasswordField = (props) => {
         {formatMessage(messages['no.repeated.characters'])}
       </span>
       <span id="username-check" className="d-flex align-items-center">
-        {props?.value?.toLowerCase().includes(props?.username?.toLowerCase()) ? <Icon className="mr-1 text-light-700" src={Remove} /> : <Icon className="text-success mr-1" src={Check} />}
+        {passwordContainsUsername ? <Icon className="mr-1 text-light-700" src={Remove} /> : <Icon className="text-success mr-1" src={Check} />}
         {formatMessage(messages['no.username.in.password'])}
       </span>
 
@@ -108,7 +129,8 @@ PasswordField.defaultProps = {
   handleChange: () => {},
   showRequirements: true,
   autoComplete: null,
-  username: ''
+  username: '',
+  value: ''
 };
 
 PasswordField.propTypes = {

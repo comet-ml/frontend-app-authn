@@ -83,7 +83,7 @@ const messages = defineMessages({
   },
   'no.username.in.password': {
     id: 'no.username.in.password',
-    defaultMessage: 'cannot contain username',
+    defaultMessage: "can't contain username",
     descripttion: 'password requirement for not including the username'
   },
   'no.whitespace': {
