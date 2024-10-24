@@ -12,6 +12,24 @@ import PropTypes from 'prop-types';
 import { LETTER_REGEX, NUMBER_REGEX, SPECIAL_REGEX, WHITESPACE_REGEX, REPEATED_CHAR_REGEX } from '../data/constants';
 import messages from './messages';
 
+
+const hasConsecutiveChars = (str) => {
+  for (let i = 0; i < str.length - 2; i++) {
+      const first = str.charCodeAt(i);
+      const second = str.charCodeAt(i + 1);
+      const third = str.charCodeAt(i + 2);
+
+      if (second === first + 1 && third === second + 1) {
+          return true;
+      }
+      
+      if (second === first - 1 && third === second - 1) {
+          return true;
+      }
+  }
+  return false;
+}
+
 const PasswordField = (props) => {
   const { formatMessage } = useIntl();
   const [isPasswordHidden, setHiddenTrue, setHiddenFalse] = useToggle(true);
@@ -48,7 +66,13 @@ const PasswordField = (props) => {
     }
 
 
-  }, [props?.username, props?.value4])
+  }, [props?.username, props?.value]);
+
+  const consecutiveChars = useMemo(() => {
+    if (!props?.value) return false;
+
+    return hasConsecutiveChars(props.value);
+  }, [props?.value]);
 
   const HideButton = (
     <IconButton onFocus={handleFocus} onBlur={handleBlur} name="password" src={VisibilityOff} iconAs={Icon} onClick={setHiddenTrue} size="sm" variant="secondary" alt={formatMessage(messages['hide.password'])} />
@@ -88,7 +112,10 @@ const PasswordField = (props) => {
         {passwordContainsUsername ? <Icon className="mr-1 text-light-700" src={Remove} /> : <Icon className="text-success mr-1" src={Check} />}
         {formatMessage(messages['no.username.in.password'])}
       </span>
-
+      <span id="consecutive-check" className="d-flex align-items-center">
+        {consecutiveChars ? <Icon className="mr-1 text-light-700" src={Remove} /> : <Icon className="text-success mr-1" src={Check} />}
+        {formatMessage(messages['no.consecutive.characters'])}
+      </span>
     </Tooltip>
   );
 
